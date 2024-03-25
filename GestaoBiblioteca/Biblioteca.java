@@ -10,7 +10,6 @@ public class Biblioteca {
         System.out.println("Digite o autor do livro:");
         String autor = scanner.nextLine();
         
-        // Criando uma instância de AddBooks e passando os dados lidos
         AddBooks addBooks = new AddBooks();
         addBooks.adicionarLivro(titulo, autor);
 
