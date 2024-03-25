@@ -3,10 +3,10 @@ public class Livro {
         public String autor;
         public String editora;
         public String sbn;
-        public int qqtEstoque;
+        public Integer qqtEstoque;
     
     
-        public Livro(String titulo, String autor, String editora, String sbn, int qqtEstoque){
+        public Livro(String titulo, String autor, String editora, String sbn, Integer qqtEstoque){
             this.titulo = titulo;
             this.autor = autor;
             this.editora = editora;
@@ -14,45 +14,43 @@ public class Livro {
             this.qqtEstoque = qqtEstoque;
         }
     
-         // Métodos getters e setters
-         public String getTitulo() {
-            return titulo;
-        }
-    
+
         public void setTitulo(String titulo) {
             this.titulo = titulo;
         }
     
-         public String getAutor() {
-            return autor;
-        }
+
     
         public void setAutor(String autor) {
             this.autor = autor;
         }
-    
-        public String getEditora() {
-            return editora;
-        }
+
     
         public void setEditora(String editora) {
             this.editora = editora;
         }
         
-        public String getSbn() {
-            return sbn;
-        }
+
     
         public void setSbn(String sbn) {
             this.sbn = sbn;
         }
         
-        public int getQqtEstoque() {
-            return qqtEstoque;
-        }
+
     
-        public void setQqtEstoque(int qqtEstoque) {
+        public void setQqtEstoque(Integer qqtEstoque) {
             this.qqtEstoque = qqtEstoque;
+        }
+
+
+        public String toString() {
+            return "Livro{\n" +
+                   "    titulo='" + titulo + "',\n" +
+                   "     autor='" + autor + "',\n" +
+                   "     editora='" + editora + "',\n" +
+                   "     sbn='" + sbn + "',\n" +
+                   "     qqtEstoque=" + qqtEstoque + "\n" +
+                    "}";
         }
            
 }

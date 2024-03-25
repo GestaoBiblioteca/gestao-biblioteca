@@ -1,3 +1,4 @@
+package src;
 import java.util.Scanner;
 
 public class Biblioteca {
@@ -17,7 +18,7 @@ public class Biblioteca {
         String sbn = scanner.nextLine();
 
         System.out.println("Digite a quantidade em estoque do livro:");
-        int qqtEstoque = scanner.nextInt();
+        Integer qqtEstoque = scanner.nextInt();
         
 
         AddBooks addBooks = new AddBooks();
