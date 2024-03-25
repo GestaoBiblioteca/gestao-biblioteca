@@ -1,14 +1,12 @@
 import java.util.ArrayList;
 
 public class AddBooks {
-    public void adicionarLivro(String titulo, String autor) {
-        Livro novoLivro;
+    public void adicionarLivro(String titulo, String autor, String editora, String sbn, int qqtEstoque) {
+        Livro novoLivro = new Livro(titulo, autor, editora, sbn, qqtEstoque);
         System.out.println("Livro adicionado: " + titulo + " por " + autor);
-        ArrayList<String> BDLibrary = new ArrayList<>();
-        BDLibrary.add(titulo);
-        BDLibrary.add(autor);
-        System.out.println("Livro cadastrado: "  + BDLibrary.get(0));
-        System.out.println("Livro cadastrado: "  + BDLibrary.get(1));
+        ArrayList<Livro> BDLibary = new ArrayList<>();
+        BDLibary.add(novoLivro);
+        System.out.println("Livro cadastrado: "  + BDLibary.get(0).getTitulo);
         
     }
 }
