@@ -1,7 +1,7 @@
 package src;
 import java.util.Scanner;
 
-public class Libary {
+public class Library {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
