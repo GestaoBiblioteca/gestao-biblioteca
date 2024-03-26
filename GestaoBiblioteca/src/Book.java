@@ -2,15 +2,15 @@ public class Book {
         public String titulo;
         public String autor;
         public String editora;
-        public String sbn;
+        public String isbn;
         public Integer qqtEstoque;
     
     
-        public Book(String titulo, String autor, String editora, String sbn, Integer qqtEstoque){
+        public Book(String titulo, String autor, String editora, String isbn, Integer qqtEstoque){
             this.titulo = titulo;
             this.autor = autor;
             this.editora = editora;
-            this.sbn = sbn;
+            this.sbn = isbn;
             this.qqtEstoque = qqtEstoque;
         }
     
@@ -32,8 +32,8 @@ public class Book {
         
 
     
-        public void setSbn(String sbn) {
-            this.sbn = sbn;
+        public void setIsbn(String isbn) {
+            this.sbn = isbn;
         }
         
 
@@ -48,7 +48,7 @@ public class Book {
                    "    titulo='" + titulo + "',\n" +
                    "     autor='" + autor + "',\n" +
                    "     editora='" + editora + "',\n" +
-                   "     sbn='" + sbn + "',\n" +
+                   "     isbn='" + isbn + "',\n" +
                    "     qqtEstoque=" + qqtEstoque + "\n" +
                     "}";
         }

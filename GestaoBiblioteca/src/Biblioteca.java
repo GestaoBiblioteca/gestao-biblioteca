@@ -27,7 +27,7 @@ public class Biblioteca {
 
         System.out.println("Digite a quantidade em estoque do livro:");
         int qtdEstoque = scanner.nextInt();
-        scanner.nextLine();  // Limpa o buffer do scanner
+        scanner.nextLine(); 
 
         Livro novoLivro = new Livro(titulo, autor, editora, isbn, qtdEstoque);
         BDLibrary.add(novoLivro);

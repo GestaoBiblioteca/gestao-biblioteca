@@ -14,15 +14,15 @@ public class Library {
         System.out.println("Digite a editora do livro:");
         String editora = scanner.nextLine();
 
-        System.out.println("Digite o sbn do livro:");
-        String sbn = scanner.nextLine();
+        System.out.println("Digite o isbn do livro:");
+        String isbn = scanner.nextLine();
 
         System.out.println("Digite a quantidade em estoque do livro:");
         Integer qqtEstoque = scanner.nextInt();
         
 
         AddBooks addBooks = new AddBooks();
-        addBooks.PushBook(titulo, autor, editora, sbn, qqtEstoque);
+        addBooks.PushBook(titulo, autor, editora, isbn, qqtEstoque);
 
 
         scanner.close();
