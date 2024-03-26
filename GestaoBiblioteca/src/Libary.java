@@ -1,7 +1,7 @@
 package src;
 import java.util.Scanner;
 
-public class Biblioteca {
+public class Libary {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
@@ -22,7 +22,7 @@ public class Biblioteca {
         
 
         AddBooks addBooks = new AddBooks();
-        addBooks.adicionarLivro(titulo, autor, editora, sbn, qqtEstoque);
+        addBooks.PushBook(titulo, autor, editora, sbn, qqtEstoque);
 
 
         scanner.close();
