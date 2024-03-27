@@ -11,82 +11,112 @@ public class Library {
     private Scanner scanner;
 
     public Library() {
-//        BDLibrary = new ArrayList<>();
         scanner = new Scanner(System.in);
     }
 
     LibraryDatabase libraryDB = new LibraryDatabase();
+    ArrayList<Book> allBooks = libraryDB.getAllBooks();
 
 
 
-    public void adicionarLivro() {
+    public void addBook() {
         System.out.println("Digite o título do livro:");
-        String titulo = scanner.nextLine();
+        String title = scanner.nextLine();
 
         System.out.println("Digite o autor do livro:");
-        String autor = scanner.nextLine();
+        String author = scanner.nextLine();
 
         System.out.println("Digite a editora do livro:");
-        String editora = scanner.nextLine();
+        String publisher = scanner.nextLine();
 
         System.out.println("Digite o ISBN do livro:");
         String isbn = scanner.nextLine();
 
         System.out.println("Digite a quantidade em estoque do livro:");
-        int qtdEstoque = scanner.nextInt();
+        int qttStock = scanner.nextInt();
         scanner.nextLine();
 
-        Book novoLivro = new Book(titulo, autor, editora, isbn, qtdEstoque);
-        libraryDB.addBook(novoLivro);
-        System.out.println("------------------");
+        Book newBook = new Book(title, author, publisher, isbn, qttStock);
+        libraryDB.addBook(newBook);
+
+        System.out.println("\nLivro adicionado: " + title + " por " + author);
+    }
+
+    public void listBooks(){
+        if(allBooks.isEmpty()){
+            System.out.println("Não há livros disponíveis na Biblioteca!");
+            return;
+        } else{
+            System.out.println("\n Lista de livros disponíveis: \n");
+            for(Book book : allBooks){
+                System.out.println(book);
+            }
+        }
+    }
+
+    public void findBookByTitle() {
+        System.out.println("Digite o título do livro que você está procurando:");
+
+        String title = scanner.nextLine();
         ArrayList<Book> allBooks = libraryDB.getAllBooks();
 
+
+        for (Book book : allBooks) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
+                System.out.println("\nLivro encontrado: " + book.getTitle() + " por " + book.getAuthor());
+
+                System.out.println("\nTítulo: " + book.getTitle());
+                System.out.println("Autor: " + book.getAuthor());
+                System.out.println("Editora: " + book.getPublisher());
+                System.out.println("ISBN: " + book.getISBN());
+                System.out.println("Quantidade: " + book.getQttStock());
+
+                return;
+            }
+        }
+
+        System.out.println("Não encontrado.");
+    }
+
+    public void findBookByAuthor() {
+        System.out.println("\nDigite o autor do livro que você está procurando:");
+        String author = scanner.nextLine();
+        boolean foundBook = false;
+
+        System.out.println("\nLista de livros encontrados do autor " + author + ":");
+
+        for (Book book : allBooks) {
+            if (book.getAuthor().equalsIgnoreCase(author)) {
+                System.out.println(book.toString());
+                foundBook = true;
+            }
+        }
+
+        if (!foundBook) {
+            System.out.println("Livro não encontrado.");
+        }
+    }
+
+    public void borrowBook() {
+        System.out.println("Lista de livros disponíveis para emprestar:");
         for(Book book : allBooks){
             System.out.println(book);
         }
 
-        System.out.println("Livro adicionado: " + titulo + " por " + autor);
-    }
-
-    public void buscarLivroPorTitulo() {
-        System.out.println("Digite o título do livro que você está procurando:");
-        String titulo = scanner.nextLine();
-
-        for (Book livro : BDLibrary) {
-            if (livro.getTitulo().equalsIgnoreCase(titulo)) {
-                System.out.println("Livro encontrado: " + livro.getTitulo() + " por " + livro.getAutor());
-                return;
-            }
-        }
-    } // Adicionei esta chave aqui
-
-    public void buscarLivroPorAutor() {
-        System.out.println("Digite o autor do livro que você está procurando:");
-        String autor = scanner.nextLine();
-
-        for (Book livro : BDLibrary) {
-            if (livro.getAutor().equalsIgnoreCase(autor)) {
-                System.out.println("Livro encontrado!");
-                System.out.println(livro.toString());
-                return;
-            }
-        }
-
-        System.out.println("Livro não encontrado.");
-    }
-
-    public void emprestarLivro() {
         System.out.println("Digite o título do livro que você deseja emprestar:");
-        String titulo = scanner.nextLine();
+        String title = scanner.nextLine();
 
-        for (Book livro : BDLibrary) {
-            if (livro.getTitulo().equalsIgnoreCase(titulo)) {
-                if (livro.getQtdEstoque() > 0) {
-                    livro.setQqtEstoque(livro.getQtdEstoque() - 1);
-                    System.out.println("Você emprestou o livro: " + livro.getTitulo());
+        for (Book book : allBooks) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
+                if (book.getQttStock() > 0) {
+                    book.setQqtStock(book.getQttStock() - 1);
+                    System.out.println("\nVocê emprestou o livro: " + book.getTitle());
+                    System.out.println("Quantidade atual do livro " + book.getTitle() + ": " + book.getQttStock());
+                    System.out.println("\nVoltando ao menu anterior.");
                     return;
                 } else {
-                    System.out.println("Desculpe, este livro está fora de estoque.");
+                    System.out.println("\nDesculpe, o livro " + book.getTitle() + " está fora de estoque.");
+                    System.out.println("Voltando ao menu.");
                     return;
                 }
             }
@@ -95,14 +125,16 @@ public class Library {
         System.out.println("Livro não encontrado.");
     }
 
-    public void devolverLivro() {
+    public void returnBook() {
         System.out.println("Digite o título do livro que você deseja devolver:");
-        String titulo = scanner.nextLine();
+        String title = scanner.nextLine();
 
-        for (Book livro : BDLibrary) {
-            if (livro.getTitulo().equalsIgnoreCase(titulo)) {
-                livro.setQqtEstoque(livro.getQtdEstoque() + 1);
-                System.out.println("Você devolveu o livro: " + livro.getTitulo());
+        ArrayList<Book> allBooks = libraryDB.getAllBooks();
+
+        for (Book book : allBooks) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
+                book.setQqtStock(book.getQttStock() + 1);
+                System.out.println("\n Você devolveu o livro: " + book.getTitle());
                 return;
             }
         }
@@ -113,36 +145,40 @@ public class Library {
 
 
 
-public void menuUsuario() {
+public void menuUser() {
         while(true){
             System.out.println("\n1. Adicionar livro");
-            System.out.println("2. Buscar livro por título");
-            System.out.println("3. Buscar livro por autor");
-            System.out.println("4. Emprestar livro");
-            System.out.println("5. Devolver livro");
-            System.out.println("6. Sair");
+            System.out.println("2. Listar livros disponíveis");
+            System.out.println("3. Buscar livro por título");
+            System.out.println("4. Buscar livro por autor");
+            System.out.println("5. Emprestar livro");
+            System.out.println("6. Devolver livro");
+            System.out.println("7. Sair");
             System.out.print("Escolha uma opção: ");
 
-            int opcao = scanner.nextInt();
+            int option = scanner.nextInt();
             scanner.nextLine();
 
-            switch (opcao) {
+            switch (option) {
                 case 1:
-                    adicionarLivro();
+                    addBook();
                     break;
                 case 2:
-                    buscarLivroPorTitulo();
+                    listBooks();
                     break;
                 case 3:
-                    buscarLivroPorAutor();
+                    findBookByTitle();
                     break;
                 case 4:
-                    emprestarLivro();
+                    findBookByAuthor();
                     break;
                 case 5:
-                    devolverLivro();
+                    borrowBook();
                     break;
                 case 6:
+                    returnBook();
+                    break;
+                case 7:
                     System.out.println("Saindo...");
                     return;
                 default:
@@ -155,6 +191,6 @@ public void menuUsuario() {
 
     public static void main(String[] args) {
         Library library = new Library();
-        library.menuUsuario();
+        library.menuUser();
     }
 }

@@ -15,7 +15,12 @@ public class LibraryDatabase {
         books.add(book);
     }
 
+    public void removeBook(Book book) {
+        books.remove(book);
+    }
+
     public ArrayList<Book> getAllBooks(){
         return books;
     }
+
 }

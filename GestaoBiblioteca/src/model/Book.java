@@ -1,35 +1,35 @@
 package src.model;
 
 public class Book {
-        public String titulo;
-        public String autor;
-        public String editora;
-        public String isbn;
-        public Integer qqtEstoque;
+        private String title;
+        private String author;
+        private String publisher;
+        private String isbn;
+        private Integer qqtStock;
     
     
-        public Book(String titulo, String autor, String editora, String isbn, Integer qqtEstoque){
-            this.titulo = titulo;
-            this.autor = autor;
-            this.editora = editora;
+        public Book(String title, String author, String publisher, String isbn, Integer qqtStock){
+            this.title = title;
+            this.author = author;
+            this.publisher = publisher;
             this.isbn = isbn;
-            this.qqtEstoque = qqtEstoque;
+            this.qqtStock = qqtStock;
         }
     
 
-        public void setTitulo(String titulo) {
-            this.titulo = titulo;
+        public void setTitle(String title) {
+            this.title = title;
         }
     
 
     
-        public void setAutor(String autor) {
-            this.autor = autor;
+        public void setAuthor(String author) {
+            this.author = author;
         }
 
     
-        public void setEditora(String editora) {
-            this.editora = editora;
+        public void setPublisher(String publisher) {
+            this.publisher = publisher;
         }
         
 
@@ -40,30 +40,37 @@ public class Book {
         
 
     
-        public void setQqtEstoque(Integer qqtEstoque) {
-            this.qqtEstoque = qqtEstoque;
+        public void setQqtStock(Integer qqtStock) {
+            this.qqtStock = qqtStock;
         }
 
 
         public String toString() {
-            return "Livro{\n" +
-                   "    titulo='" + titulo + "',\n" +
-                   "     autor='" + autor + "',\n" +
-                   "     editora='" + editora + "',\n" +
-                   "     isbn='" + isbn + "',\n" +
-                   "     qqtEstoque=" + qqtEstoque + "\n" +
-                    "}";
+            return
+                   "    Titulo: " + title + "\n" +
+                   "    Autor: " + author + "\n" +
+                   "    Editora: " + publisher + "\n" +
+                   "    ISBN: " + isbn + "\n" +
+                   "    Quantidade: " + qqtStock + "\n";
         }
 
-        public String getTitulo() {
-                return titulo;
+        public String getTitle() {
+                return title;
         }
 
-        public String getAutor() {
-            return autor;
+        public String getAuthor() {
+            return author;
         }
 
-        public Integer getQtdEstoque() {
-            return qqtEstoque;
+        public Integer getQttStock() {
+            return qqtStock;
+        }
+
+        public String getISBN() {
+            return isbn;
+        }
+
+        public String getPublisher() {
+            return publisher;
         }
 }
