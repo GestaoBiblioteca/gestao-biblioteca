@@ -1,3 +1,5 @@
+package src;
+
 public class Book {
         public String titulo;
         public String autor;
@@ -10,7 +12,7 @@ public class Book {
             this.titulo = titulo;
             this.autor = autor;
             this.editora = editora;
-            this.sbn = isbn;
+            this.isbn = isbn;
             this.qqtEstoque = qqtEstoque;
         }
     
@@ -33,7 +35,7 @@ public class Book {
 
     
         public void setIsbn(String isbn) {
-            this.sbn = isbn;
+            this.isbn = isbn;
         }
         
 
@@ -52,5 +54,16 @@ public class Book {
                    "     qqtEstoque=" + qqtEstoque + "\n" +
                     "}";
         }
-           
+
+        public String getTitulo() {
+                return titulo;
+        }
+
+        public String getAutor() {
+            return autor;
+        }
+
+        public Integer getQtdEstoque() {
+            return qqtEstoque;
+        }
 }

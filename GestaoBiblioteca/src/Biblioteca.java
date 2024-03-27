@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Biblioteca {
-    private ArrayList<Livro> BDLibrary;
+    private ArrayList<Book> BDLibrary;
     private Scanner scanner;
 
     public Biblioteca() {
@@ -23,13 +23,13 @@ public class Biblioteca {
         String editora = scanner.nextLine();
 
         System.out.println("Digite o ISBN do livro:");
-        int isbn = scanner.nextInt();
+        String isbn = scanner.nextLine();
 
         System.out.println("Digite a quantidade em estoque do livro:");
         int qtdEstoque = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
 
-        Livro novoLivro = new Livro(titulo, autor, editora, isbn, qtdEstoque);
+        Book novoLivro = new Book(titulo, autor, editora, isbn, qtdEstoque);
         BDLibrary.add(novoLivro);
 
         System.out.println("Livro adicionado: " + titulo + " por " + autor);
@@ -39,7 +39,7 @@ public class Biblioteca {
         System.out.println("Digite o título do livro que você está procurando:");
         String titulo = scanner.nextLine();
 
-        for (Livro livro : BDLibrary) {
+        for (Book livro : BDLibrary) {
             if (livro.getTitulo().equalsIgnoreCase(titulo)) {
                 System.out.println("Livro encontrado: " + livro.getTitulo() + " por " + livro.getAutor());
                 return;
@@ -51,9 +51,10 @@ public class Biblioteca {
         System.out.println("Digite o autor do livro que você está procurando:");
         String autor = scanner.nextLine();
 
-        for (Livro livro : BDLibrary) {
+        for (Book livro : BDLibrary) {
             if (livro.getAutor().equalsIgnoreCase(autor)) {
-                System.out.println("Livro encontrado: " + livro.getTitulo() + " por " + livro.getAutor());
+                System.out.println("Livro encontrado!");
+                System.out.println(livro.toString());
                 return;
             }
         }
@@ -65,10 +66,10 @@ public class Biblioteca {
         System.out.println("Digite o título do livro que você deseja emprestar:");
         String titulo = scanner.nextLine();
 
-        for (Livro livro : BDLibrary) {
+        for (Book livro : BDLibrary) {
             if (livro.getTitulo().equalsIgnoreCase(titulo)) {
                 if (livro.getQtdEstoque() > 0) {
-                    livro.setQtdEstoque(livro.getQtdEstoque() - 1);
+                    livro.setQqtEstoque(livro.getQtdEstoque() - 1);
                     System.out.println("Você emprestou o livro: " + livro.getTitulo());
                     return;
                 } else {
@@ -85,9 +86,9 @@ public class Biblioteca {
         System.out.println("Digite o título do livro que você deseja devolver:");
         String titulo = scanner.nextLine();
 
-        for (Livro livro : BDLibrary) {
+        for (Book livro : BDLibrary) {
             if (livro.getTitulo().equalsIgnoreCase(titulo)) {
-                livro.setQtdEstoque(livro.getQtdEstoque() + 1);
+                livro.setQqtEstoque(livro.getQtdEstoque() + 1);
                 System.out.println("Você devolveu o livro: " + livro.getTitulo());
                 return;
             }
@@ -100,41 +101,42 @@ public class Biblioteca {
 
 
 public void menuUsuario() {
-    while (true) {
-        System.out.println("\n1. Adicionar livro");
-        System.out.println("2. Buscar livro por título");
-        System.out.println("3. Buscar livro por autor");
-        System.out.println("4. Emprestar livro");
-        System.out.println("5. Devolver livro");
-        System.out.println("6. Sair");
-        System.out.print("Escolha uma opção: ");
+        while(true){
+            System.out.println("\n1. Adicionar livro");
+            System.out.println("2. Buscar livro por título");
+            System.out.println("3. Buscar livro por autor");
+            System.out.println("4. Emprestar livro");
+            System.out.println("5. Devolver livro");
+            System.out.println("6. Sair");
+            System.out.print("Escolha uma opção: ");
 
-        int opcao = scanner.nextInt();
-        scanner.nextLine();  
+            int opcao = scanner.nextInt();
+            scanner.nextLine();
 
-        switch (opcao) {
-            case 1:
-                adicionarLivro();
-                break;
-            case 2:
-                buscarLivroPorTitulo();
-                break;
-            case 3:
-                buscarLivroPorAutor();
-                break;
-            case 4:
-                emprestarLivro();
-                break;
-            case 5:
-                devolverLivro();
-                break;
-            case 6:
-                System.out.println("Saindo...");
-                return;
-            default:
-                System.out.println("Opção inválida. Tente novamente.");
+            switch (opcao) {
+                case 1:
+                    adicionarLivro();
+                    break;
+                case 2:
+                    buscarLivroPorTitulo();
+                    break;
+                case 3:
+                    buscarLivroPorAutor();
+                    break;
+                case 4:
+                    emprestarLivro();
+                    break;
+                case 5:
+                    devolverLivro();
+                    break;
+                case 6:
+                    System.out.println("Saindo...");
+                    return;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
         }
-    }
+
 }
 
 
