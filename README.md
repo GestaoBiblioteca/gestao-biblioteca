@@ -1,2 +1,2 @@
 # GestaoBiblioteca
-Gestão de biblioteca criado com Java para o 5º modulo de Java da ADA
+Gestão de library criado com Java para o 5º modulo de Java da ADA

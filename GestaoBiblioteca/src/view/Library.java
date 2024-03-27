@@ -1,16 +1,23 @@
-package src;
+package src.view;
+
+import src.controller.LibraryDatabase;
+import src.model.Book;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Biblioteca {
+public class Library {
     private ArrayList<Book> BDLibrary;
     private Scanner scanner;
 
-    public Biblioteca() {
-        BDLibrary = new ArrayList<>();
+    public Library() {
+//        BDLibrary = new ArrayList<>();
         scanner = new Scanner(System.in);
     }
+
+    LibraryDatabase libraryDB = new LibraryDatabase();
+
+
 
     public void adicionarLivro() {
         System.out.println("Digite o título do livro:");
@@ -30,7 +37,13 @@ public class Biblioteca {
         scanner.nextLine();
 
         Book novoLivro = new Book(titulo, autor, editora, isbn, qtdEstoque);
-        BDLibrary.add(novoLivro);
+        libraryDB.addBook(novoLivro);
+        System.out.println("------------------");
+        ArrayList<Book> allBooks = libraryDB.getAllBooks();
+
+        for(Book book : allBooks){
+            System.out.println(book);
+        }
 
         System.out.println("Livro adicionado: " + titulo + " por " + autor);
     }
@@ -141,7 +154,7 @@ public void menuUsuario() {
 
 
     public static void main(String[] args) {
-        Biblioteca biblioteca = new Biblioteca();
-        biblioteca.menuUsuario();
+        Library library = new Library();
+        library.menuUsuario();
     }
 }
