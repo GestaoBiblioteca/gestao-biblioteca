@@ -5,7 +5,7 @@ import src.model.Book;
 import java.util.ArrayList;
 
 public class LibraryDatabase {
-    private ArrayList<Book> books;
+    public ArrayList<Book> books;
 
     public LibraryDatabase(){
         this.books = new ArrayList<>();

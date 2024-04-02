@@ -1,0 +1,7 @@
+apply plugin: 'java'
+
+dependencies {
+    implementation files('dependencies/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47.jar')
+    implementation files('dependencies/rs2xml/rs2xml.jar')
+    implementation files('dependencies/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar')
+}

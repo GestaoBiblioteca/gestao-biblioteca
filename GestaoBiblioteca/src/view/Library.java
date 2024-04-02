@@ -3,6 +3,8 @@ package src.view;
 import src.controller.LibraryDatabase;
 import src.model.Book;
 
+import javax.swing.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -66,7 +68,7 @@ public class Library {
                 System.out.println("\nLivro encontrado: " + book.getTitle() + " por " + book.getAuthor());
 
                 System.out.println("\nTítulo: " + book.getTitle());
-                System.out.println("Autor: " + book.getAuthor());
+                System.out.println("Auto,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r: " + book.getAuthor());
                 System.out.println("Editora: " + book.getPublisher());
                 System.out.println("ISBN: " + book.getISBN());
                 System.out.println("Quantidade: " + book.getQttStock());
@@ -190,7 +192,35 @@ public void menuUser() {
 
 
     public static void main(String[] args) {
-        Library library = new Library();
-        library.menuUser();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite 1 para utilizar o sistema pelo console");
+        System.out.println("Digite 2 para utilizar o sistema através da interface gráfica");
+
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                Library library = new Library();
+                library.menuUser();
+                break;
+            case 2:
+                LibraryGUI h = new LibraryGUI();
+
+                URL url = Library.class.getResource("../resources/icon/icon.jpg");
+                ImageIcon icon = new ImageIcon(url);
+
+                h.setIconImage(icon.getImage());
+                h.setContentPane(h.getPanelMain());
+                h.setTitle("Sistema de Gestão de Biblioteca");
+                h.setExtendedState(h.MAXIMIZED_BOTH);
+                h.setSize(800, 600);
+                h.setVisible(true);
+                h.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                break;
+            default:
+                System.out.println("Opção inválida");
+                break;
+        }
     }
 }
