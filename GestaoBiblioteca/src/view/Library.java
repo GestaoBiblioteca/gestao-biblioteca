@@ -68,7 +68,7 @@ public class Library {
                 System.out.println("\nLivro encontrado: " + book.getTitle() + " por " + book.getAuthor());
 
                 System.out.println("\nTítulo: " + book.getTitle());
-                System.out.println("Auto,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,r: " + book.getAuthor());
+                System.out.println("Autor: " + book.getAuthor());
                 System.out.println("Editora: " + book.getPublisher());
                 System.out.println("ISBN: " + book.getISBN());
                 System.out.println("Quantidade: " + book.getQttStock());
