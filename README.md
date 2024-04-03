@@ -25,7 +25,7 @@ Essas dependências estão localizadas na pasta `dependencies` do projeto.
 
 ## Configuração do Banco de Dados
 
-Este projeto requer um banco de dados MySQL local. No nosso caso, utilizamos o MySQL através do XAMPP.
+Este projeto requer um banco de dados MySQL local. No nosso caso, utilizamos o MySQL através do [XAMPP](https://www.apachefriends.org/pt_br/download.html).
 
 _Obs: Existe a possibilidade de utilizar outro banco SQL que não seja o MySQL propriamente dito, mas será necessário atualizar o método "connect()" para o banco escolhido, isto na seguinte instrução:_
 ```bash
